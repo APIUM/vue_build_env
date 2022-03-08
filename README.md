@@ -1,6 +1,6 @@
-# HackApp Web Interface
+# Vue CI Build Environment
 
-Vue web interface for HackApp. 
+Build/dev environment for Vue.js.
 
 ## Developer instructions
 
@@ -10,6 +10,6 @@ Vue web interface for HackApp.
 
 ### To run the dockerfile and open a bash prompt
 
-Code will be in /src
+Code in the ./src dir will be in /src with the example volume mount.
 
 `docker run -v $PWD/src/:/src -it node-test /bin/bash`
