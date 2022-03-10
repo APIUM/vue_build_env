@@ -68,4 +68,7 @@ RUN cat /etc/os-release
 
 USER ${user}
 
-WORKDIR /src
+RUN yarn global add @vue/cli
+RUN PATH=$PATH:~/.yarn/bin
+
+WORKDIR /app
