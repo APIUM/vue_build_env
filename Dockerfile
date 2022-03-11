@@ -54,6 +54,10 @@ ENV npm_config_loglevel warn
 # allow installing when the main user is root
 ENV npm_config_unsafe_perm true
 
+# Create node modules folder to give ownership
+RUN mkdir -p /app/node_modules
+RUN chown builder:builder /app/node_modules
+
 # versions of local tools
 RUN echo  " node version:    $(node -v) \n" \
   "npm version:     $(npm -v) \n" \
@@ -70,7 +74,6 @@ USER ${user}
 
 RUN yarn global add @vue/cli
 RUN PATH=$PATH:~/.yarn/bin
-RUN mkdir -p /app/node_modules
-RUN chown builder:builder /app/node_modules
+
 
 WORKDIR /app
