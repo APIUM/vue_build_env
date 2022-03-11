@@ -70,5 +70,7 @@ USER ${user}
 
 RUN yarn global add @vue/cli
 RUN PATH=$PATH:~/.yarn/bin
+RUN mkdir -p /app/node_modules
+RUN chown builder:builder /app/node_modules
 
 WORKDIR /app
