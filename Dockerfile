@@ -41,11 +41,6 @@ RUN apt-get install -y \
     libasound2 \
     xvfb
 
-# Create user to map
-ENV user builder
-RUN useradd -m -d /home/${user} -s /bin/bash --uid 1000 --user-group ${user} \
-  && chown -R ${user}:${user} /home/${user}
-
 # a few environment variables to make NPM installs easier
 # good colors for most applications
 ENV TERM xterm
@@ -53,10 +48,6 @@ ENV TERM xterm
 ENV npm_config_loglevel warn
 # allow installing when the main user is root
 ENV npm_config_unsafe_perm true
-
-# Create node modules folder to give ownership
-RUN mkdir -p /app/node_modules
-RUN chown builder:builder /app/node_modules
 
 # versions of local tools
 RUN echo  " node version:    $(node -v) \n" \
@@ -69,8 +60,6 @@ RUN echo  " node version:    $(node -v) \n" \
 RUN echo "More version info"
 RUN cat /etc/lsb-release
 RUN cat /etc/os-release
-
-USER ${user}
 
 RUN yarn global add @vue/cli
 RUN PATH=$PATH:~/.yarn/bin
