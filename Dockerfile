@@ -40,6 +40,8 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     libasound2 \
     xvfb
+RUN apt-get install -y \
+    chromium-browser
 
 # a few environment variables to make NPM installs easier
 # good colors for most applications
